@@ -326,10 +326,18 @@ const saveMetaDataSingleFile = (_editionCount) => {
         `Writing metadata for ${_editionCount}: ${JSON.stringify(metadata)}`
       )
     : null;
-  fs.writeFileSync(
-    `${buildDir}/json/gif_required_${_editionCount}.json`,
-    JSON.stringify(metadata, null, 2)
-  );
+
+  if(gifRequiredList.has(_editionCount)){
+    fs.writeFileSync(
+      `${buildDir}/json/gif_required_${_editionCount}.json`,
+      JSON.stringify(metadata, null, 2)
+    );
+  }else{
+    fs.writeFileSync(
+      `${buildDir}/json/${_editionCount}.json`,
+      JSON.stringify(metadata, null, 2)
+    );
+  }
 };
 
 function shuffle(array) {
