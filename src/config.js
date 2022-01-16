@@ -22,70 +22,6 @@ const solanaMetadata = {
 };
 
 
-// If you have selected Solana then the collection starts from 0 automatically
-const layerConfigurations = [
-  {
-    growEditionSizeTo: 50,
-    layersOrder: [
-      { name: "Department" },
-      {
-        name: "Female-Type",
-        options: {
-          displayName: "Type"
-        },
-      },
-      {
-        name: "Female-Skin",
-        options: {
-          displayName: "Skin"
-        },
-      },
-      {
-        name: "Female-Eye",
-        options: {
-          displayName: "Eye"
-        },
-      },
-      {
-        name: "Female-Mouth",
-        options: {
-          displayName: "Mouth"
-        },
-      },
-      {
-        name: "Female-Glasses",
-        options: {
-          displayName: "Glasses"
-        },
-      },
-      {
-        name: "Female-Hair",
-        options: {
-          displayName: "Hair"
-        },
-      },
-      {
-        name: "Female-Clothes",
-        options: {
-          displayName: "Clothes"
-        },
-      },
-      {
-        name: "Female-Accessori-TEST",
-        options: {
-          displayName: "Accessori"
-        },
-      },
-    ],
-  },
-  
- 
-];
-
-
-
-/*
-// If you have selected Solana then the collection starts from 0 automatically
 const layerConfigurations = [
   {
     growEditionSizeTo: 6856,
@@ -142,7 +78,7 @@ const layerConfigurations = [
     ],
   },
   {
-    growEditionSizeTo: 100,
+    growEditionSizeTo: 6956,
     layersOrder: [
       { name: "Department" },
       {
@@ -196,7 +132,7 @@ const layerConfigurations = [
     ],
   },
   {
-    growEditionSizeTo: 2956,
+    growEditionSizeTo: 9912,
     layersOrder: [
       { name: "Department" },
       {
@@ -250,7 +186,7 @@ const layerConfigurations = [
     ],
   },
   {
-    growEditionSizeTo: 88,
+    growEditionSizeTo: 10000,
     layersOrder: [
       { name: "Department" },
       {
@@ -304,7 +240,7 @@ const layerConfigurations = [
     ],
   },
 ];
-*/
+
 const shuffleLayerConfigurations = true;
 
 const debugLogs = false;
@@ -350,7 +286,7 @@ const extraMetadata = {};
 
 const rarityDelimiter = "#";
 
-const uniqueDnaTorrance = 9999;
+const uniqueDnaTorrance = 10000;
 
 const preview = {
   thumbPerRow: 5,
