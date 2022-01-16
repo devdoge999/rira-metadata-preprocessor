@@ -327,7 +327,7 @@ const saveMetaDataSingleFile = (_editionCount) => {
       )
     : null;
   fs.writeFileSync(
-    `${buildDir}/json/${_editionCount}.json`,
+    `${buildDir}/json/gif_required_${_editionCount}.json`,
     JSON.stringify(metadata, null, 2)
   );
 };
