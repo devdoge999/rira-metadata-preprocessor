@@ -5,8 +5,8 @@ const { NETWORK } = require(`${basePath}/constants/network.js`);
 const network = NETWORK.eth;
 
 // General metadata for Ethereum
-const namePrefix = "Your Collection";
-const description = "Remember to replace this description";
+const namePrefix = "RIT TOMOZ";
+const description = "Rira Institute of Technology TOMOZ";
 const baseUri = "ipfs://NewUriToReplace";
 
 const solanaMetadata = {
@@ -21,34 +21,240 @@ const solanaMetadata = {
   ],
 };
 
+
+
 // If you have selected Solana then the collection starts from 0 automatically
 const layerConfigurations = [
   {
-    growEditionSizeTo: 5,
+    growEditionSizeTo: 6856,
     layersOrder: [
-      { name: "Background" },
-      { name: "Eyeball" },
-      { name: "Eye color" },
-      { name: "Iris" },
-      { name: "Shine" },
-      { name: "Bottom lid" },
-      { name: "Top lid" },
+      { name: "Department" },
+      {
+        name: "Female-Type",
+        options: {
+          displayName: "Type"
+        },
+      },
+      {
+        name: "Female-Skin",
+        options: {
+          displayName: "Skin"
+        },
+      },
+      {
+        name: "Female-Eye",
+        options: {
+          displayName: "Eye"
+        },
+      },
+      {
+        name: "Female-Mouth",
+        options: {
+          displayName: "Mouth"
+        },
+      },
+      {
+        name: "Female-Glasses",
+        options: {
+          displayName: "Glasses"
+        },
+      },
+      {
+        name: "Female-Hair",
+        options: {
+          displayName: "Hair"
+        },
+      },
+      {
+        name: "Female-Clothes",
+        options: {
+          displayName: "Clothes"
+        },
+      },
+      {
+        name: "Female-Accessori",
+        options: {
+          displayName: "Accessori"
+        },
+      },
+    ],
+  },
+  {
+    growEditionSizeTo: 100,
+    layersOrder: [
+      { name: "Department" },
+      {
+        name: "Female-Type",
+        options: {
+          displayName: "Type"
+        },
+      },
+      {
+        name: "Female-Skin",
+        options: {
+          displayName: "Skin"
+        },
+      },
+      {
+        name: "Female-Eye",
+        options: {
+          displayName: "Eye"
+        },
+      },
+      {
+        name: "Female-Mouth",
+        options: {
+          displayName: "Mouth"
+        },
+      },
+      {
+        name: "Female-Glasses",
+        options: {
+          displayName: "Glasses"
+        },
+      },
+      {
+        name: "Female-Hair-WithHat",
+        options: {
+          displayName: "Hair"
+        },
+      },
+      {
+        name: "Female-Clothes",
+        options: {
+          displayName: "Clothes"
+        },
+      },
+      {
+        name: "Female-Accessori",
+        options: {
+          displayName: "Accessori"
+        },
+      },
+    ],
+  },
+  {
+    growEditionSizeTo: 2956,
+    layersOrder: [
+      { name: "Department" },
+      {
+        name: "Male-Type",
+        options: {
+          displayName: "Type"
+        },
+      },
+      {
+        name: "Male-Skin",
+        options: {
+          displayName: "Skin"
+        },
+      },
+      {
+        name: "Male-Eye",
+        options: {
+          displayName: "Eye"
+        },
+      },
+      {
+        name: "Male-Mouth",
+        options: {
+          displayName: "Mouth"
+        },
+      },
+      {
+        name: "Male-Glasses",
+        options: {
+          displayName: "Glasses"
+        },
+      },
+      {
+        name: "Male-Hair",
+        options: {
+          displayName: "Hair"
+        },
+      },
+      {
+        name: "Male-Clothes",
+        options: {
+          displayName: "Clothes"
+        },
+      },
+      {
+        name: "Male-Accessori",
+        options: {
+          displayName: "Accessori"
+        },
+      },
+    ],
+  },
+  {
+    growEditionSizeTo: 88,
+    layersOrder: [
+      { name: "Department" },
+      {
+        name: "Cyborg-Type",
+        options: {
+          displayName: "Type"
+        },
+      },
+      {
+        name: "Cyborg-Skin",
+        options: {
+          displayName: "Skin"
+        },
+      },
+      {
+        name: "Cyborg-Eye",
+        options: {
+          displayName: "Eye"
+        },
+      },
+      {
+        name: "Cyborg-Mouth",
+        options: {
+          displayName: "Mouth"
+        },
+      },
+      {
+        name: "Cyborg-Glasses",
+        options: {
+          displayName: "Glasses"
+        },
+      },
+      {
+        name: "Cyborg-Hair",
+        options: {
+          displayName: "Hair"
+        },
+      },
+      {
+        name: "Cyborg-Clothes",
+        options: {
+          displayName: "Clothes"
+        },
+      },
+      {
+        name: "Cyborg-Accessori",
+        options: {
+          displayName: "Accessori"
+        },
+      },
     ],
   },
 ];
 
-const shuffleLayerConfigurations = false;
+const shuffleLayerConfigurations = true;
 
 const debugLogs = false;
 
 const format = {
-  width: 512,
-  height: 512,
+  width: 1024,
+  height: 1024,
   smoothing: false,
 };
 
 const gif = {
-  export: false,
+  export: true,
   repeat: 0,
   quality: 100,
   delay: 500,
