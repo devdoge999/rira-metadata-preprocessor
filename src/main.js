@@ -1,4 +1,5 @@
 const basePath = process.cwd();
+const path = require('path');
 const { NETWORK } = require(`${basePath}/constants/network.js`);
 const fs = require("fs");
 const sha1 = require(`${basePath}/node_modules/sha1`);
@@ -86,6 +87,7 @@ const getElements = (path) => {
 const layersSetup = (layersOrder) => {
   const layers = layersOrder.map((layerObj, index) => ({
     id: index,
+    needgif: false,
     elements: getElements(`${layersDir}/${layerObj.name}/`),
     name:
       layerObj.options?.["displayName"] != undefined
@@ -176,9 +178,13 @@ const addAttributes = (_element) => {
   });
 };
 
-const loadLayerImg = async (_layer) => {
+const loadLayerImg = async (_layer, _index) => {
   return new Promise(async (resolve) => {
     const image = await loadImage(`${_layer.selectedElement.path}`);
+    if(path.extname(_layer.selectedElement.path) == ".gif"){
+      console.log("Need gif #" + _index[0]);
+      _layer.needgif = true;
+    }
     resolve({ layer: _layer, loadedImage: image });
   });
 };
@@ -358,7 +364,7 @@ const startCreating = async () => {
         let loadedElements = [];
 
         results.forEach((layer) => {
-          loadedElements.push(loadLayerImg(layer));
+          loadedElements.push(loadLayerImg(layer, abstractedIndexes));
         });
 
         await Promise.all(loadedElements).then((renderObjectArray) => {

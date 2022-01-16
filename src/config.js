@@ -22,7 +22,69 @@ const solanaMetadata = {
 };
 
 
+// If you have selected Solana then the collection starts from 0 automatically
+const layerConfigurations = [
+  {
+    growEditionSizeTo: 10,
+    layersOrder: [
+      { name: "Department" },
+      {
+        name: "Female-Type",
+        options: {
+          displayName: "Type"
+        },
+      },
+      {
+        name: "Female-Skin",
+        options: {
+          displayName: "Skin"
+        },
+      },
+      {
+        name: "Female-Eye",
+        options: {
+          displayName: "Eye"
+        },
+      },
+      {
+        name: "Female-Mouth",
+        options: {
+          displayName: "Mouth"
+        },
+      },
+      {
+        name: "Female-Glasses",
+        options: {
+          displayName: "Glasses"
+        },
+      },
+      {
+        name: "Female-Hair",
+        options: {
+          displayName: "Hair"
+        },
+      },
+      {
+        name: "Female-Clothes",
+        options: {
+          displayName: "Clothes"
+        },
+      },
+      {
+        name: "Female-Accessori-TEST",
+        options: {
+          displayName: "Accessori"
+        },
+      },
+    ],
+  },
+  
+ 
+];
 
+
+
+/*
 // If you have selected Solana then the collection starts from 0 automatically
 const layerConfigurations = [
   {
@@ -242,22 +304,22 @@ const layerConfigurations = [
     ],
   },
 ];
-
+*/
 const shuffleLayerConfigurations = true;
 
 const debugLogs = false;
 
 const format = {
-  width: 1024,
-  height: 1024,
+  width: 512,
+  height: 512,
   smoothing: false,
 };
 
 const gif = {
-  export: true,
+  export: false,
   repeat: 0,
   quality: 100,
-  delay: 500,
+  delay: 100,
 };
 
 const text = {
