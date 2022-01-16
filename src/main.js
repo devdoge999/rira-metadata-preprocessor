@@ -25,6 +25,7 @@ const {
 } = require(`${basePath}/src/config.js`);
 const canvas = createCanvas(format.width, format.height);
 const ctx = canvas.getContext("2d");
+var gifRequiredList = new Set();
 ctx.imageSmoothingEnabled = format.smoothing;
 var metadataList = [];
 var attributesList = [];
@@ -87,7 +88,6 @@ const getElements = (path) => {
 const layersSetup = (layersOrder) => {
   const layers = layersOrder.map((layerObj, index) => ({
     id: index,
-    needgif: false,
     elements: getElements(`${layersDir}/${layerObj.name}/`),
     name:
       layerObj.options?.["displayName"] != undefined
@@ -110,10 +110,19 @@ const layersSetup = (layersOrder) => {
 };
 
 const saveImage = (_editionCount) => {
+if(gifRequiredList.has(_editionCount)){
+  console.log("Gif required #" + _editionCount);
+  fs.writeFileSync(
+    `${buildDir}/images/gif_required_${_editionCount}.gif`,
+    canvas.toBuffer("image/png")
+  );
+}else{
   fs.writeFileSync(
     `${buildDir}/images/${_editionCount}.png`,
     canvas.toBuffer("image/png")
   );
+}
+  
 };
 
 const genColor = () => {
@@ -128,10 +137,15 @@ const drawBackground = () => {
 };
 
 const addMetadata = (_dna, _edition) => {
+  let _extname = 'png';
+  if(gifRequiredList.has(_edition)){
+    _extname = 'gif';
+  }
+
   let tempMetadata = {
     name: `${namePrefix} #${_edition}`,
     description: description,
-    image: `${baseUri}/${_edition}.gif`,
+    image: `${baseUri}/${_edition}.${_extname}`,
     edition: _edition,
     ...extraMetadata,
     attributes: attributesList
@@ -178,8 +192,8 @@ const loadLayerImg = async (_layer, _index) => {
   return new Promise(async (resolve) => {
     const image = await loadImage(`${_layer.selectedElement.path}`);
     if(path.extname(_layer.selectedElement.path) == ".gif"){
-      console.log("Need gif #" + _index[0]);
-      _layer.needgif = true;
+      console.log("Gif layer exist #" + _index[0]);
+      gifRequiredList.add(_index[0]);
     }
     resolve({ layer: _layer, loadedImage: image });
   });
