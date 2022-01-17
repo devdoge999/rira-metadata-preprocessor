@@ -183,12 +183,12 @@ const addMetadata = (_dna, _edition) => {
 const addAttributes = (_element) => {
   let selectedElement = _element.layer.selectedElement;
 
-  //if(_element.layer.name != "Skin"){
+  if(_element.layer.name != "Skin"){
     attributesList.push({
       trait_type: _element.layer.name,
       value: selectedElement.name,
     });
-  //}
+  }
 };
 
 const loadLayerImg = async (_layer, _index) => {
