@@ -1,11 +1,13 @@
 var fs = require('fs');
 var path = require("path");
 const shell = require('shelljs');
+const { buffer } = require('shelljs/src/common');
 var dir = path.join(__dirname, 'build', 'json');
 
 /* 
     This script optimized for Windows 10 environment. 
-    If there are multiple moving parts, check that the frame timing matches.
+    Due to the frame matching problem, it was assumed that there is only one GIF part.
+    For shelljs, you need to use -g or --save depending on the environment.
 
     [require magick]
     https://imagemagick.org/script/download.php
@@ -15,7 +17,23 @@ var dir = path.join(__dirname, 'build', 'json');
     Set-Alias magick -Value 'C:\Program Files\ImageMagick-7.0.11-Q16-HDRI\magick.exe' 
 */
 
-//##clean skin 필요합니다
+function magick(imagePath, coverImagePath, saveFilePath){
+    shell.exec('magick convert ' + imagePath + ' null: -resize 1024x1024 -gravity east ' + coverImagePath + ' -resize 1024x1024 -layers composite ' + saveFilePath , {silent:false}).stdout;
+    //layers-for-gif are images optimized for gifs.
+}
+
+/*
+    type: Male, Female, Cyborg..
+    attributes : Skin, Eye, Hair..
+*/
+function getPath(type, trait_type, value){
+    //layers-for-gif are images optimized for gifs.
+    if(value == 'Winkeyes' || value == 'Shiba'){
+        return './layers-for-gif/' + gender + '-' + trait_type + '/' + value + '.gif';
+    }else{
+        return './layers-for-gif/' + gender + '-' + trait_type + '/' + value + '.png';
+    }
+}
 
 var metadataList = fs.readdirSync(dir); 
     console.log(metadataList);    
@@ -33,22 +51,28 @@ var metadataList = fs.readdirSync(dir);
 
         console.log(buffer);
     }})
-
-
-
+        //합성예외 "Type"
+        //합성예외 "None"?
 
         
-/*
-        let Department = metadata.attributes[0]['value'];
-        let Type = metadata.attributes[1]['value'];
-        let Skin = metadata.attributes[2]['value'];
-        let Eye = metadata.attributes[3]['value'];
-        let Mouth = metadata.attributes[4]['value'];
-        let Glasses = metadata.attributes[5]['value'];
-        let Hair = metadata.attributes[6]['value'];
-        let Clothes = metadata.attributes[7]['value'];
-        let Accessori = metadata.attributes[8]['value'];
-*/
+
+        let tomoDepartment = metadata.attributes[0]['value'];
+        let tomoType = metadata.attributes[1]['value'];
+        let tomoSkin = metadata.attributes[2]['value'];
+        let tomoEye = metadata.attributes[3]['value'];
+        let tomoMouth = metadata.attributes[4]['value'];
+        let tomoGlasses = metadata.attributes[5]['value'];
+        let tomoHair = metadata.attributes[6]['value'];
+        let tomoClothes = metadata.attributes[7]['value'];
+        let tomoAccessori = metadata.attributes[8]['value'];
+
+        getPath(tomoType, "")
+
+        if(Type == "Male"){
+            
+        }
+
+
         /*
         console.log(Department);
         console.log(Type);
@@ -61,7 +85,7 @@ var metadataList = fs.readdirSync(dir);
         console.log(Accessori);*/
         
 
-var version = shell.exec('magick logo: logo.gif', {silent:false}).stdout;
+var version = s
 
 //sample
 //magick convert Chemistry.png null: -resize 1024x1024 -gravity east Male-Freckle.png -resize 1024x1024 -layers composite test.gif
