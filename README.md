@@ -20,5 +20,5 @@ npm run build
 * Animation rebuild script is 'example' that magick+hashlips art engine is utilized in Windows environment.
 * For Linux-based system or other projects, refer to the comments in the script and set them differently.
 ```sh
-node rebuilder.js
+npm run animate
 ```
