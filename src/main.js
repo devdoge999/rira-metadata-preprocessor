@@ -194,10 +194,6 @@ const addAttributes = (_element) => {
 const loadLayerImg = async (_layer, _index) => {
   return new Promise(async (resolve) => {
     const image = await loadImage(`${_layer.selectedElement.path}`);
-    if(path.extname(_layer.selectedElement.path) == ".gif"){
-      console.log("Gif layer exist #" + _index[0]);
-      gifRequiredList.add(_index[0]);
-    }
     resolve({ layer: _layer, loadedImage: image });
   });
 };
@@ -380,13 +376,28 @@ const startCreating = async () => {
       editionCount <= layerConfigurations[layerConfigIndex].growEditionSizeTo
     ) {
       let newDna = createDna(layers);
+
       if (isDnaUnique(dnaList, newDna)) {
         let results = constructLayerToDna(newDna, layers);
         let loadedElements = [];
+        let gifCount = 0;
 
         results.forEach((layer) => {
+          //check only 1 gif parts
+          if(path.extname(layer.selectedElement.path) == ".gif"){
+            console.log("Gif layer exist #" + abstractedIndexes[0]);
+            gifRequiredList.add(abstractedIndexes[0]);
+            gifCount ++;
+            console.log("Gif count:"+gifCount);
+          }
+          
           loadedElements.push(loadLayerImg(layer, abstractedIndexes));
         });
+
+        if(gifCount > 1){
+          console.log("Only one gif part is allowed!");
+          continue;
+        }
 
         await Promise.all(loadedElements).then((renderObjectArray) => {
           debugLogs ? console.log("Clearing canvas") : null;
