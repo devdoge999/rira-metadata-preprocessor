@@ -23,7 +23,7 @@ const solanaMetadata = {
 
 const layerConfigurations = [
   {
-    growEditionSizeTo: 6856,
+    growEditionSizeTo: 5712,
     layersOrder: [
       { name: "Department" },
       {
@@ -77,7 +77,7 @@ const layerConfigurations = [
     ],
   },
   {
-    growEditionSizeTo: 6956,
+    growEditionSizeTo: 5912,
     layersOrder: [
       { name: "Department" },
       {
@@ -123,7 +123,7 @@ const layerConfigurations = [
         },
       },
       {
-        name: "Female-Accessori",
+        name: "None",
         options: {
           displayName: "Accessori"
         },
